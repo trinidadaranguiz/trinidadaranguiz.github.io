@@ -22,7 +22,7 @@
         </nav>
     </header>
 
-    <!-- Sección 1: Inicio (cambiar po el gif de la toni) -->
+    <!-- Sección 1: Inicio -->
     <section class="main-visual">
         <div class="fondo">
             <img src="fondo2.png" style="width: 100%; height: auto;" alt="Imagen a tamaño de página">
@@ -69,7 +69,7 @@
                 <img class="ied-img-main" src="ied-device.jpg" alt="Imagen principal IED">
             </div>
         </div>
-        <div class="ied-redbar"></div>
+     
     </section>
 
     <!-- Sección 4: SWAMP -->
@@ -166,7 +166,7 @@
       </div>
     </section>
 
-    <!-- Cursor cute -->
+    <!-- Cursor super cuteee -->
     <div class="custom-cursor"></div>
     <script>
       const cursor = document.querySelector('.custom-cursor');
@@ -175,12 +175,16 @@
         cursor.style.top = `${e.clientY}px`;
       });
     </script>
+
+    <!-- Animaciones -->
     <script>
-      // Fade-in con Intersection Observer (como ya tienes)
+    
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
           }
         });
       }, { threshold: 0.15 });
@@ -189,19 +193,18 @@
         observer.observe(section);
       });
 
-      // --- NUEVO: Forzar animación al navegar por el menú ---
+
+      //para q la animacion se reinicie
       document.querySelectorAll('.top-nav a').forEach(link => {
         link.addEventListener('click', function(e) {
           const href = this.getAttribute('href');
           if (href && href.startsWith('#')) {
             const target = document.querySelector(href);
             if (target && target.classList.contains('section-fade')) {
-              // Quita la clase visible para reiniciar la animación
               target.classList.remove('visible');
-              // Espera al scroll y vuelve a agregar la clase
               setTimeout(() => {
                 target.classList.add('visible');
-              }, 100); // Puedes ajustar el tiempo si quieres
+              }, 100);
             }
           }
         });
