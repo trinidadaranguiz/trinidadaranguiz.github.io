@@ -85,8 +85,8 @@ body {
 }
 
 .critical-media-text {
-    width: 600px;
-    max-width: 90vw;
+    width: 450px;
+    max-width: 70vw;
     text-align: right;
     color: black;
     font-size: 2vw;
@@ -95,7 +95,7 @@ body {
     text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
     position: relative;
     z-index: 2;
-    margin-bottom: 3vw;
+    margin-bottom: 5vw;
 }
 
 .critical-media-text strong {
@@ -136,10 +136,9 @@ body {
 
 .ied-col.der {
   position: relative;
-  align-items: center;
-  justify-content: flex-start;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .ied-title {
@@ -195,8 +194,8 @@ body {
   border-radius: 9999px;
   position: absolute;
   left: 50%;
-  top: 0;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
   opacity: 0.7;
 }
@@ -391,6 +390,7 @@ body {
   text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
   text-align: center;
   margin-bottom: 2rem;
+  max-width: 400px;
 }
 
 /* adaptacion a dispositivos */
@@ -660,13 +660,14 @@ body {
 .reflexion-container {
   width: 100vw;
   max-width: 1800px;
-  padding: 0 3vw 0 3vw; 
+  padding: 0 50px 0 3vw; 
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
-  flex: 1;                  
+  flex: 1;  
+  margin-bottom: 70px;                
 }
 
 .reflexion-titulo {
@@ -815,7 +816,7 @@ body {
 }
 
 
-/* css de lasanimaciones d transicion entre secciones */
+/* css de lasanimaciones de transicion entre secciones */
 .section-fade {
   opacity: 0;
   transform: translateY(40px);
@@ -826,5 +827,16 @@ body {
 .section-fade.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.gif-portada {
+  position: absolute;
+  left: 50%;
+  top: 30%;           /* Más arriba */
+  width: 550px;       /* Más chico */
+  max-width: 60vw;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
 }
 
