@@ -30,7 +30,7 @@
     </section>
 
     <!-- Sección 2: Critical Media -->
-    <section class="critical-media" id="critical-media">
+    <section class="critical-media section-fade" id="critical-media">
         <div class="critical-media-container">
             <div class="critical-media-title">
                 <span class="critical">CRITICAL</span>
@@ -46,7 +46,7 @@
     </section>
 
     <!-- Sección 3: IED -->
-    <section class="ied-section" id="ied">
+    <section class="ied-section section-fade" id="ied">
         <div class="ied-container">
             <div class="ied-col izq">
                 <div class="ied-explosive">“Improvised Explosive Device”<br><span>(artefacto explosivo improvisado)</span>
@@ -73,7 +73,7 @@
     </section>
 
     <!-- Sección 4: SWAMP -->
-    <section class="swamp" id="swamp">
+    <section class="swamp section-fade" id="swamp">
       <div class="swamp-container">
         <div class="swamp-title">S.W.A.M.P.</div>
         <div class="swamp-subtitle">(Studies of Work Atmospheres and Mass Production)</div>
@@ -106,7 +106,7 @@
     </section>
 
     <!-- Sección 5: Proceso -->
-    <section class="proceso" id="proceso">
+    <section class="proceso section-fade" id="proceso">
       <div class="proceso-grid">
         <div class="proceso-title">PROCESO</div>
         <div class="proceso-col pasos-1-5">
@@ -130,7 +130,7 @@
     </section>
 
     <!-- Sección 6: Lev Manovich -->
-    <section class="lev-manovich" id="lev-manovich">
+    <section class="lev-manovich section-fade" id="lev-manovich">
   <div class="lev2-grid">
     <div class="lev2-col izq">
       <div class="lev2-title">
@@ -157,7 +157,7 @@
 </section>
 
     <!-- Sección 7: Reflexión -->
-    <section class="reflexion" id="reflexion">
+    <section class="reflexion section-fade" id="reflexion">
       <div class="reflexion-container">
         <div class="reflexion-titulo">Ver el dolor...</div>
         <div class="reflexion-texto">
@@ -173,6 +173,38 @@
       document.addEventListener('mousemove', (e) => {
         cursor.style.left = `${e.clientX}px`;
         cursor.style.top = `${e.clientY}px`;
+      });
+    </script>
+    <script>
+      // Fade-in con Intersection Observer (como ya tienes)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.section-fade').forEach(section => {
+        observer.observe(section);
+      });
+
+      // --- NUEVO: Forzar animación al navegar por el menú ---
+      document.querySelectorAll('.top-nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target && target.classList.contains('section-fade')) {
+              // Quita la clase visible para reiniciar la animación
+              target.classList.remove('visible');
+              // Espera al scroll y vuelve a agregar la clase
+              setTimeout(() => {
+                target.classList.add('visible');
+              }, 100); // Puedes ajustar el tiempo si quieres
+            }
+          }
+        });
       });
     </script>
 
